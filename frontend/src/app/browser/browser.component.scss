@@ -1,0 +1,79 @@
+.flex-container{
+    display: flex;
+    width:100%;
+    height:100vh;
+    background-color:red;
+}
+.tool-menu-container{
+    flex-basis:20%;
+    background:green;
+    height:100%;
+}
+.main-window-browser-container{
+    flex-basis:80%;
+    background:blue;
+    height:100%;
+}
+.image-info-container{
+    flex-basis:20%;
+    background:green;
+    height:100%;
+}
+.for-menu-icons{
+    width:100%;
+    height:auto;
+    background:purple;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:2px;
+    padding-right:2px;
+}
+.tool-icon{
+    cursor:pointer;
+    width:30px;
+    height:30px;
+    margin:6px;
+    background:yellow;
+    display:inline-block;
+    text-align: center;
+    i{
+        font-family: 'FontAwesome';
+        font-size:20px;
+        display:inline-block;
+        margin-top:5px;
+    }
+    &:hover{
+        background-color: aqua;
+    }
+}
+.title-container{
+    width:100%;
+    padding:4px;
+    background-color:brown;
+    text-align: left;
+}
+.for-option-container{
+    width:100%;
+    height:auto;
+    background:purple;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:2px;
+    padding-right:2px;
+}
+.main-canv{
+    margin:0 auto;
+    margin-top:100px;
+    background-color:white;
+    width:100%;
+    height:70%;
+}
+.file-info-container{
+    width:100%;
+    height:auto;
+    background:purple;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:2px;
+    padding-right:2px;
+}

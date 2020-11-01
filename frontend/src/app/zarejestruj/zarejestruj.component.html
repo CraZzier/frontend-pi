@@ -1,0 +1,184 @@
+<header>
+    <app-startmenu></app-startmenu>
+    <section class="video-section">
+        <video autoplay loop muted id="video-section-video">
+        <source src="assets\video\wave.mov" type="video/mp4">
+      </video>
+        <div class="main-title container">Dicom Viewer</div>
+    </section>
+</header>
+<main>
+    <section class="container">
+        <form class="form-signin" [formGroup]="register_f" (ngSubmit)="onSubmit()" >
+            <img class="log-logo" src="assets/images/kadyceusz.svg" alt="">
+            <h1 class="h3 mb-3 font-weight-normal">Zarejestruj się</h1>
+            <div class="form-group row" [ngClass]="{'has-danger' : register_f.get('name').errors && (register_f.get('name').touched || register_f.get('name').dirty),
+                                                    'has-success' : !register_f.get('name').errors && (register_f.get('name').touched || register_f.get('name').dirty)}">
+                <label class="col-2 label form-inline" for="inputName" >Imię</label>
+                <div class="col-10">
+                    <input type="text" id="inputName" class="form-control" placeholder="Imię"   formControlName="name">
+                    <span class="help-block" *ngIf="register_f.get('name').errors && (register_f.get('name').touched || register_f.get('name').dirty)">
+                        <div class="text-danger" *ngIf="register_f.get('name').errors.required">
+                            Pole jest obowiązkowe
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('name').errors.maxlength">
+                            Za duża ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('name').errors.minlength">
+                            Nie wystarczająca ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('name').errors.pattern">
+                            Znaki nie mogą zostać zaakceptowane
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-danger' : register_f.get('surname').errors && (register_f.get('surname').touched || register_f.get('surname').dirty),
+                                                    'has-success' : !register_f.get('surname').errors && (register_f.get('surname').touched || register_f.get('surname').dirty)}">
+                <label class="col-2 label form-inline" for="inputSurname" >Nazwisko</label>
+                <div class="col-10">
+                    <input type="text" id="inputSurname" class="form-control" placeholder="Nazwisko"  formControlName="surname">
+                    <span class="help-block" *ngIf="register_f.get('surname').errors && (register_f.get('surname').touched || register_f.get('surname').dirty)">
+                        <div class="text-danger" *ngIf="register_f.get('surname').errors.required">
+                            Pole jest obowiązkowe
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('surname').errors.maxlength">
+                            Za duża ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('surname').errors.minlength">
+                            Nie wystarczająca ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('surname').errors.pattern">
+                            Znaki nie mogą zostać zaakceptowane
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-danger' : register_f.get('pesel').errors && (register_f.get('pesel').touched || register_f.get('pesel').dirty),
+                                                    'has-success' : !register_f.get('pesel').errors && (register_f.get('pesel').touched || register_f.get('pesel').dirty)}">
+                <label class="col-2 label form-inline" for="inputPesel" >Pesel</label>
+                <div class="col-10">
+                    <input type="text" id="inputPesel" class="form-control" placeholder="Pesel"  formControlName="pesel">
+                    <span class="help-block" *ngIf="register_f.get('pesel').errors && (register_f.get('pesel').touched || register_f.get('pesel').dirty)">
+                        <div class="text-danger" *ngIf="register_f.get('pesel').errors.required">
+                            Pole jest obowiązkowe
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('pesel').errors.maxlength">
+                            Za duża ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('pesel').errors.minlength">
+                            Nie wystarczająca ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('pesel').errors.pattern">
+                            Znaki nie mogą zostać zaakceptowane
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row" >
+                <label class="col-2 label form-inline" for="InputSex" >Płeć</label>
+                <div class="col-10">
+                    <select class="form-control" name="sex" id="InputSex" formControlName="sex" [(ngModel)]="default_value" [ngClass]="{'has-success-my':register_f.get('sex').touched}">
+                        <option value="woman" >Kobieta</option>
+                        <option value="man">Mężczyzna</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-danger' : register_f.get('email').errors && (register_f.get('email').touched || register_f.get('email').dirty),
+                                                    'has-success' : !register_f.get('email').errors && (register_f.get('email').touched || register_f.get('email').dirty)}">
+                <label class="col-2 label form-inline" for="inputEmail" >Email</label>
+                <div class="col-10">
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email"   formControlName="email" >
+                    <span class="help-block" *ngIf="register_f.get('email').errors && (register_f.get('email').touched || register_f.get('email').dirty)">
+                        <div class="text-danger" *ngIf="register_f.get('email').errors.required">
+                            Pole jest obowiązkowe
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('email').errors.maxlength">
+                            Za duża ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('email').errors.minlength">
+                            Nie wystarczająca ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('email').errors.email">
+                            Niepoprawny email
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-danger' : register_f.get('date').errors && (register_f.get('date').touched || register_f.get('date').dirty),
+                                                    'has-success' : !register_f.get('date').errors && (register_f.get('date').touched || register_f.get('date').dirty)}">
+                <label class="col-2 label form-inline" for="inputDate" >Data urodzenia</label>
+                <div class="col-10">
+                    <input type="date" id="inputDate" class="form-control" placeholder="Data urodzenia" formControlName="date">
+                    <span class="help-block" *ngIf="register_f.get('date').errors && (register_f.get('date').touched || register_f.get('date').dirty)">
+                        <div class="text-danger" *ngIf="register_f.get('date').errors.required">
+                            Pole jest obowiązkowe
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('date').errors.maxlength">
+                            Za duża ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('date').errors.minlength">
+                            Nie wystarczająca ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('date').errors.pattern">
+                            Znaki nie mogą zostać zaakceptowane
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-danger' : register_f.get('password').errors && (register_f.get('password').touched || register_f.get('password').dirty),
+                                                    'has-success' : !register_f.get('password').errors && (register_f.get('password').touched || register_f.get('password').dirty)}">
+                <label class="col-2 label form-inline" for="inputPassword" >Hasło</label>
+                <div class="col-10">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Hasło"  formControlName="password">
+                    <span class="help-block" *ngIf="register_f.get('password').errors && (register_f.get('password').touched || register_f.get('password').dirty)">
+                        <div class="text-danger" *ngIf="register_f.get('password').errors.required">
+                            Pole jest obowiązkowe
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('password').errors.maxlength">
+                            Za duża ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('password').errors.minlength">
+                            Nie wystarczająca ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="register_f.get('password').errors.pattern">
+                            Znaki nie mogą zostać zaakceptowane
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-danger' : register_f.errors?.passwordCheck && (register_f.get('passwordR').touched || register_f.get('passwordR').dirty),
+                                                    'has-success' : !register_f.errors?.passwordCheck && (register_f.get('passwordR').touched || register_f.get('passwordR').dirty)}">
+                <label class="col-2 label form-inline" for="inputPasswordRepeat" >Powtórz hasło</label>
+                <div class="col-10">
+                    <input type="password" id="inputPasswordRepeat" class="form-control" placeholder=" Powtórz Hasło"  formControlName="passwordR">
+                    <span class="help-block" *ngIf="register_f.errors?.passwordCheck && (register_f.touched || register_f.dirty)">
+                        <span class="text-danger" *ngIf="register_f.errors?.passwordCheck && (register_f.get('password').touched || register_f.get('passwordR').touched)">
+                            Hasła nie zgadzają się
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="w-100">
+                <span class="text-danger" *ngIf="validated==0"><br>
+                    Formularz zawiera błędy
+                </span>
+            </div>
+            <br>
+            <div class="checkbox mb-3">
+                <label>
+                <input type="checkbox" value="remember-me" formControlName="agree"> Wyrażam zgodę na przetwarzanie danych osobowych
+                <span class="text-danger" *ngIf="agreement==0"><br>
+                    Pole jest obowiązkowe
+                </span>
+              </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Zarejestruj</button>
+            <hr>
+            <p class="mt-5 mb-3 text-muted">©2020</p>
+        </form>
+    </section>
+</main>
+<footer>
+    <app-footer></app-footer>
+</footer>

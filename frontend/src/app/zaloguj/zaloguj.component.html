@@ -1,0 +1,65 @@
+<header>
+    <app-startmenu></app-startmenu>
+    <section class="video-section">
+        <video autoplay loop muted id="video-section-video">
+        <source src="assets\video\wave.mov" type="video/mp4">
+      </video>
+        <div class="main-title container">Dicom Viewer</div>
+    </section>
+</header>
+<main>
+    <section class="container">
+        <form class="form-login" [formGroup]="login_f" (ngSubmit)="onSubmit()" autocomplete="off">
+            <img class="log-logo" src="assets/images/kadyceusz.svg" alt="">
+            <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
+            <div class="form-group row" [ngClass]="{'has-danger' : login_f.get('pesel').errors && (login_f.get('pesel').touched || login_f.get('pesel').dirty),
+                                                    'has-success' : !login_f.get('pesel').errors && (login_f.get('pesel').touched || login_f.get('pesel').dirty)}">
+                <label class="col-2 label form-inline" for="inputPesel" >Pesel</label>
+                <div class="col-10">
+                    <input type="text" id="inputPesel" class="form-control" placeholder="Pesel"  formControlName="pesel">
+                    <span class="help-block" *ngIf="login_f.get('pesel').errors && (login_f.get('pesel').touched || login_f.get('pesel').dirty)">
+                        <div class="text-danger" *ngIf="login_f.get('pesel').errors.required">
+                            Pole jest obowiązkowe
+                        </div>
+                        <div class="text-danger" *ngIf="login_f.get('pesel').errors.maxlength">
+                            Za duża ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="login_f.get('pesel').errors.minlength">
+                            Nie wystarczająca ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="login_f.get('pesel').errors.pattern">
+                            Znaki nie mogą zostać zaakceptowane
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-danger' : login_f.get('password').errors && (login_f.get('password').touched || login_f.get('password').dirty),
+                                                    'has-success' : !login_f.get('password').errors && (login_f.get('password').touched || login_f.get('password').dirty)}">
+                <label class="col-2 label form-inline" for="inputPassword" >Hasło</label>
+                <div class="col-10">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Hasło"  formControlName="password">
+                    <span class="help-block" *ngIf="login_f.get('password').errors && (login_f.get('password').touched || login_f.get('password').dirty)">
+                        <div class="text-danger" *ngIf="login_f.get('password').errors.required">
+                            Pole jest obowiązkowe
+                        </div>
+                        <div class="text-danger" *ngIf="login_f.get('password').errors.maxlength">
+                            Za duża ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="login_f.get('password').errors.minlength">
+                            Nie wystarczająca ilosć znaków
+                        </div>
+                        <div class="text-danger" *ngIf="login_f.get('password').errors.pattern">
+                            Znaki nie mogą zostać zaakceptowane
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
+            <hr>
+            <p class="mt-5 mb-3 text-muted">©2020</p>
+        </form>
+    </section>
+</main>
+<footer>
+    <app-footer></app-footer>
+</footer>

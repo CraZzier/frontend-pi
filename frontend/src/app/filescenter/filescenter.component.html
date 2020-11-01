@@ -1,0 +1,48 @@
+
+<header>
+    <app-latermenu></app-latermenu>
+    <section class="video-section">
+        <video autoplay loop muted id="video-section-video">
+        <source src="assets\video\wave.mov" type="video/mp4">
+      </video>
+        <div class="main-title container">Dicom Viewer</div>
+    </section>
+</header>
+<main>
+    <section class="container">
+        <img class="log-logo" src="assets/images/kadyceusz.svg" alt="">
+        <h3 style="margin-bottom: 10px;">Dodaj pliki</h3>
+        <ngx-dropzone (change)="onSelect($event)" [accept]="'.dcm'" class="border-custom">
+            <ngx-dropzone-label>Dodaj plik</ngx-dropzone-label>
+            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+        </ngx-dropzone>
+        <input type="button" (click)="onSubmit()" class="btn btn-success form-control" value="Wyślij" />
+    </section>
+    <section class="container">
+        <table style="margin-top:50px;" class="table table-striped table-dark">
+            <thead>
+                <th>Nazwa</th>
+                <th>Rozmiar</th>
+                <th>Id serii</th>
+                <th>Data badania</th>
+                <th>Id badania</th>
+                <th>Id obrazka</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let singleHeader of fileHeaders">
+                    <td>{{singleHeader.Name}}</td>
+                    <td>{{singleHeader.Size}}</td>
+                    <td>{{singleHeader.SeriesUID}}</td>
+                    <td>{{singleHeader.StudyDate}}</td>
+                    <td>{{singleHeader.StudyUID}}</td>
+                    <td>{{singleHeader.SopUID}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <app-footer></app-footer>
+</footer>
